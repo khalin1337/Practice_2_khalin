@@ -41,20 +41,26 @@ namespace Practice_Linq
             return games;
 
         }
+        static void PrintMatch(FootballGame game) //Функція для виведення запитів 1-7,10
+        {
+            Console.WriteLine($"{game.Date.ToShortDateString()} {game.Home_team} - {game.Away_team}" +
+            $", Score: {game.Home_score} - {game.Away_score}" +
+            $", Country: {game.Country}");
+        }
 
 
-        // Запит 1
+     // Запит 1
         static void Query1(List<FootballGame> games)
         {
             //Query 1: Вивести всі матчі, які відбулися в Україні у 2012 році.
 
-            var selectedGames = games; // Корегуємо запит !!!
+            var selectedGames = games.Where(game => game.Country == "Ukraine" && game.Date.Year == 2012); ; // Корегуємо запит !!!
 
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 1 ========================");
 
-            // див. приклад як має бути виведено:
+            foreach (FootballGame game in selectedGames) { PrintMatch(game); }
 
 
         }
